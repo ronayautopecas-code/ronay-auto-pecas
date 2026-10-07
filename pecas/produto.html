@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Produto | Ronay Auto Peças</title>
+  <style>
+    :root {
+      --primary: #0a3871;
+      --accent: #f59e0b;
+      --bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --text: #212529;
+      --text-muted: #6c757d;
+      --border: #e2e8f0;
+      --whatsapp: #25d366;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); }
+
+    header {
+      background-color: var(--primary);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-container { text-decoration: none; color: #fff; font-weight: 800; font-size: 1.2rem; }
+    .btn-voltar { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    .btn-voltar:hover { color: var(--accent); }
+
+    .container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+
+    .product-detail-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .product-detail-card { grid-template-columns: 1fr; }
+    }
+
+    .gallery-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .main-img { max-width: 100%; max-height: 380px; object-fit: contain; }
+    .product-info { display: flex; flex-direction: column; }
+
+    .badge-status {
+      display: inline-block;
+      background: #ebfbee;
+      color: #2b8a3e;
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+      align-self: flex-start;
+    }
+
+    .title { font-size: 1.6rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; line-height: 1.2; }
+    .subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    .size-section { margin-bottom: 1.5rem; }
+    .size-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .size-badge {
+      display: inline-block;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      background: #f0f4f8;
+    }
+
+    .btn-zap-large {
+      background-color: var(--whatsapp);
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      padding: 0.9rem 1.5rem;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1.05rem;
+      display: block;
+      margin: 1.5rem 0;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+      transition: opacity 0.2s;
+    }
+    .btn-zap-large:hover { opacity: 0.9; }
+
+    .description-container {
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .section-heading {
+      font-size: 1.2rem;
+      color: var(--primary);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .desc-text { font-size: 0.95rem; line-height: 1.7; color: #495057; margin-bottom: 1.5rem; }
+    .benefits-list { list-style: none; margin-bottom: 1.5rem; }
+    .benefits-list li { padding: 0.4rem 0; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="btn-voltar">← Voltar aos Óleos</a>
+    <a href="index.html" class="brand-container">RONAY CATÁLOGO</a>
+  </header>
+
+  <div class="container">
+    <div class="product-detail-card">
+      <div class="gallery-container">
+        <img id="prod-img" src="" alt="" class="main-img">
+      </div>
+
+      <div class="product-info">
+        <span class="badge-status">✔ Em Estoque / Pronta Entrega</span>
+        <h1 id="prod-title" class="title"></h1>
+        <p id="prod-subtitle" class="subtitle"></p>
+
+        <div class="size-section">
+          <div class="size-title">Embalagem Disponível:</div>
+          <div id="prod-size"></div>
+        </div>
+
+        <a id="prod-zap" href="#" target="_blank" class="btn-zap-large">
+          Cotar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="description-container">
+      <h2 class="section-heading">Descrição do Produto</h2>
+      <p id="prod-desc" class="desc-text"></p>
+
+      <h2 class="section-heading">Principais Vantagens & Benefícios</h2>
+      <ul id="prod-benefits" class="benefits-list"></ul>
+
+      <h2 class="section-heading">Especificações Técnicas & Normas</h2>
+      <p id="prod-apply" class="desc-text"></p>
+    </div>
+  </div>
+
+  <script src="produtos.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const produtoId = urlParams.get('id');
+    const item = produtos[produtoId];
+
+    if (item) {
+      document.title = item.titulo + " | Ronay Auto Peças";
+
+      const badge = document.querySelector('.badge-status');
+      if (item.status === "Sem estoque") {
+        badge.innerText = "✖ Fora de Estoque";
+        badge.style.backgroundColor = "#ffebee";
+        badge.style.color = "#c62828";
+      } else {
+        badge.innerText = "✔ Em Estoque / Pronta Entrega";
+        badge.style.backgroundColor = "#ebfbee";
+        badge.style.color = "#2b8a3e";
+      }
+
+      document.getElementById('prod-img').src = item.imagem;
+      document.getElementById('prod-img').alt = item.titulo;
+      document.getElementById('prod-title').innerText = item.titulo;
+      document.getElementById('prod-subtitle').innerText = item.subtitulo;
+
+      const boxSize = document.getElementById('prod-size');
+      if (Array.isArray(item.tamanho)) {
+        boxSize.innerHTML = item.tamanho.map(t => {
+          if (!t.estoque) {
+            return '<span style="display:inline-block; margin-right:8px; padding:4px 10px; border-radius:6px; border:1.5px solid #ef4444; color:#dc2626; background:#fee2e2; text-decoration:line-through; font-size:0.85rem; font-weight:bold;">' + t.nome + ' (Sem estoque)</span>';
+          }
+          return '<span style="display:inline-block; margin-right:8px; padding:4px 10px; border-radius:6px; border:2px solid #0a3871; color:#0a3871; background:#f0f4f8; font-size:0.85rem; font-weight:bold;">' + t.nome + '</span>';
+        }).join('');
+      } else {
+        boxSize.innerHTML = '<span class="size-badge">' + (item.tamanho || '1L') + '</span>';
+      }
+
+      document.getElementById('prod-desc').innerText = item.descricao;
+      document.getElementById('prod-apply').innerHTML = item.aplicacao;
+
+      const linkZap = "https://wa.me/5511985823312?text=" + encodeURIComponent("Olá! Gostaria de cotar o " + item.titulo);
+      document.getElementById('prod-zap').href = linkZap;
+
+      const lista = document.getElementById('prod-benefits');
+      lista.innerHTML = "";
+      if (item.beneficios && Array.isArray(item.beneficios)) {
+        item.beneficios.forEach(b => {
+          const li = document.createElement('li');
+          li.innerHTML = "✔ " + b;
+          lista.appendChild(li);
+        });
+      }
+    } else {
+      document.querySelector('.container').innerHTML = '<p style="text-align:center; padding: 40px; font-size: 1.1rem; color: #6c757d;">Produto não encontrado.</p>';
+    }
+  </script>
+</body>
+</html>

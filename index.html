@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Central de Catálogos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #070a12;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Topo / Banner */
+    .header {
+      text-align: center;
+      padding: 65px 20px 45px;
+      background: radial-gradient(circle at 50% 0%, rgba(30, 41, 59, 0.9) 0%, rgba(7, 10, 18, 0) 75%);
+    }
+
+    /* Conteúdo na frente do fundo de partículas (particulas.js) */
+    .header, .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-content {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .header h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .header p {
+      color: #94a3b8;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Container dos Cards */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+      flex: 1;
+      width: 100%;
+    }
+
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 26px;
+    }
+
+    /* Estrutura dos Cards */
+    .hub-card {
+      position: relative;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 34px 28px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    .card-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      opacity: 0.7;
+      transition: height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .card-icon {
+      font-size: 42px;
+      margin-bottom: 18px;
+      width: fit-content;
+      transition: transform 0.3s ease;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .hub-card h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .hub-card p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 18px;
+    }
+
+    .btn-action {
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    /* Cores e Destaques Individuais de Cada Catálogo */
+    /* 1. Vonixx (Azul / Ciano) */
+    .card-vonixx .card-glow { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+    .card-vonixx .card-tag, .card-vonixx .btn-action { color: #38bdf8; }
+    .card-vonixx:hover { border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 16px 36px rgba(2, 132, 199, 0.18); }
+
+    /* 2. Óleos e Lubrificantes (Âmbar / Dourado) */
+    .card-oleos .card-glow { background: linear-gradient(90deg, #d97706, #fbbf24); }
+    .card-oleos .card-tag, .card-oleos .btn-action { color: #fbbf24; }
+    .card-oleos:hover { border-color: rgba(251, 191, 36, 0.4); box-shadow: 0 16px 36px rgba(217, 119, 6, 0.18); }
+
+    /* 3. Peças Mecânicas (Vermelho / Coral) */
+    .card-pecas .card-glow { background: linear-gradient(90deg, #dc2626, #f87171); }
+    .card-pecas .card-tag, .card-pecas .btn-action { color: #f87171; }
+    .card-pecas:hover { border-color: rgba(248, 113, 113, 0.4); box-shadow: 0 16px 36px rgba(220, 38, 38, 0.18); }
+
+    /* Efeitos de Hover */
+    .hub-card:hover {
+      transform: translateY(-5px);
+      background: #141e33;
+    }
+
+    .hub-card:hover .card-glow {
+      height: 4px;
+      opacity: 1;
+    }
+
+    .hub-card:hover .card-icon {
+      transform: scale(1.08);
+    }
+
+    .hub-card:hover .btn-action {
+      transform: translateX(4px);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <span class="badge">Portal de Produtos</span>
+      <h1>Central de Catálogos</h1>
+      <p>Consulte a disponibilidade de produtos, lubrificantes e peças em nosso estoque.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="hub-grid">
+
+      <!-- Card 1: Vonixx -->
+      <a href="vonixx/index.html" class="hub-card card-vonixx">
+        <div class="card-glow"></div>
+        <div class="card-icon" style="width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+  <img 
+    src="vonixx/img/logovonixx.png" 
+    alt="Logo Vonixx" 
+    style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;"
+  >
+</div>
+        <div class="card-tag">Estética & Detailing</div>
+        <h2>Linha Vonixx</h2>
+        <p>Compostos polidores, vitrificadores cerâmicos, selantes, ceras e limpadores técnicos.</p>
+        <div class="card-footer">
+          <span class="btn-action">Acessar Catálogo &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Card 2: Óleos e Fluidos -->
+      <a href="oleos/index.html" class="hub-card card-oleos">
+        <div class="card-icon" style="width: 52px; height: 52px; border-radius: 8px; overflow: hidden; background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 4px; margin-bottom: 18px;">
+  <img 
+    src="oleos/img/logooleo.jpg" 
+    alt="Óleos" 
+    style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;"
+  >
+</div>
+        <div class="card-tag">Lubrificantes & Filtros</div>
+        <h2>Óleos & Fluidos</h2>
+        <p>Lubrificantes automotivos sintéticos e minerais, aditivos e fluidos de freio.</p>
+        <div class="card-footer">
+          <span class="btn-action">Acessar Catálogo &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Card 3: Peças Mecânicas -->
+      <a href="pecas/index.html" class="hub-card card-pecas">
+        <div class="card-glow"></div>
+        <div class="card-icon" style="width: 52px; height: 52px; border-radius: 8px; overflow: hidden; background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 4px; margin-bottom: 18px;">
+  <img 
+    src="pecas/img/logomotor.jpg" 
+    alt="Óleos" 
+    style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;"
+  >
+        </div>
+        <div class="card-tag">Mecânica & Reposição</div>
+        <h2>Peças para motor</h2>
+        <p>Válvulas termostaticas, cebolinha de óleo, pastilha e discos de freio.</p>
+        <div class="card-footer">
+          <span class="btn-action">Acessar Catálogo &rarr;</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <script src="particulas.js"></script>
+</body>
+</html>

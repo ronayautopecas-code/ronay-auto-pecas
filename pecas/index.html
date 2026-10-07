@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Óleos & Fluidos | Ronay Auto Peças</title>
+  <style>
+    :root {
+      --primary: #0a3871;
+      --accent: #f59e0b;
+      --bg: #f4f6f8;
+      --card-bg: #ffffff;
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --border-color: #e5e7eb;
+      --whatsapp: #25d366;
+      --whatsapp-hover: #1eb954;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding-bottom: 3rem;
+    }
+
+    .container {
+      position: relative; /* fica na frente das bolinhas (particulas.js) */
+      z-index: 1;
+      max-width: 1280px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      position: relative;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .product-link {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .image-box {
+      width: 100%;
+      height: 200px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .image-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover .image-box img {
+      transform: scale(1.04);
+    }
+
+    .card-body {
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .product-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: #2b3445;
+      margin-bottom: 0.6rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 3.6em;
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #16a34a;
+      background: #f0fdf4;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      align-self: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .btn-zap {
+      background-color: var(--whatsapp);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 0.55rem 0.75rem;
+      border-radius: 6px;
+      display: block;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-zap:hover {
+      background-color: var(--whatsapp-hover);
+    }
+
+    @media (max-width: 640px) {
+      .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      .image-box {
+        height: 160px;
+      }
+      .card-body {
+        padding: 0.65rem;
+      }
+      .product-title {
+        font-size: 0.82rem;
+        min-height: 3.3em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Botão de retorno à tela central -->
+    <a href="../index.html" style="
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      background-color: #0b1120;
+      color: #f59e0b;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 9px 16px;
+      border-radius: 8px;
+      border: 1px solid #1e293b;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
+    " onmouseover="this.style.backgroundColor='#131d31'; this.style.borderColor='#f59e0b';" onmouseout="this.style.backgroundColor='#0b1120'; this.style.borderColor='#1e293b';">
+      &larr; Voltar para a Central de Catálogos
+    </a>
+
+    <h2 class="section-title">Catálogo de Óleos & Fluidos</h2>
+
+    <div class="catalog-grid">
+
+      <!-- PRODUTO 1: Filtro de Óleo GM  -->
+      <div class="product-card">
+        <a href="produto.html?id=16365" target="_blank" class="product-link">
+          <div class="image-box">
+            <img src="img/16365.png" alt="Filtro de óleo para motores GM 1.0 1.4 1.6 8v">
+          </div>
+          <div class="card-body">
+            <div class="product-title">Filtro de Óleo GM 1.0 1.4 1.6 8v</div>
+            <span class="badge-status">✔ Pronta Entrega</span>
+          </div>
+        </a>
+        <div style="padding: 0 0.85rem 0.85rem;">
+          <a href="https://wa.me/5511985823312?text=Olá!%20Gostaria%20de%20cotar%20o%20Filtro%20de%20Óleo%20GM" target="_blank" class="btn-zap">
+            Cotar no WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- PRODUTO 2: Cabo de Vela Magneti Marelli Corsa, Montana, Celta e Meriva  -->
+      <div class="product-card">
+        <a href="produto.html?id=96423" target="_blank" class="product-link">
+          <div class="image-box">
+            <img src="img/96423.png" alt="Cabo de Vela Magneti Marelli Corsa, Montana, Celta e Meriva">
+          </div>
+          <div class="card-body">
+            <div class="product-title">Cabo de Vela Magneti Marelli Corsa, Montana, Celta e Meriva</div>
+            <span class="badge-status">✔ Pronta Entrega</span>
+          </div>
+        </a>
+        <div style="padding: 0 0.85rem 0.85rem;">
+          <a href="https://wa.me/5511985823312?text=Olá!%20Gostaria%20de%20cotar%20o%20Cabo%20de%20Vela%20Magneti%20Marelli" target="_blank" class="btn-zap">
+            Cotar no WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- PRODUTO 3: Radnaq 75w90 para câmbio  -->
+      <div class="product-card">
+        <a href="produto.html?id=radnaq75w90" target="_blank" class="product-link">
+          <div class="image-box">
+            <img src="img/radnaq75w90.png" alt="Óleo para Câmbios Radnaq 75W90 1 litro">
+          </div>
+          <div class="card-body">
+            <div class="product-title">Óleo para Câmbios Radnaq 75W90 1 litro</div>
+            <span class="badge-status">✔ Pronta Entrega</span>
+          </div>
+        </a>
+        <div style="padding: 0 0.85rem 0.85rem;">
+          <a href="https://wa.me/5511985823312?text=Olá!%20Gostaria%20de%20cotar%20o%20Óleo%20Radnaq%2075W90" target="_blank" class="btn-zap">
+            Cotar no WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../particulas.js" data-cores="#1d4ed8,#dc2626,#eab308"></script>
+</body>
+</html>
